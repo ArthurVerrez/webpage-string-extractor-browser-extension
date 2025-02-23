@@ -30,8 +30,7 @@ Notes:
 
 - The first time you load the extension, you might need to refresh the page you want to extract data from if it was opened before installing the extension.
 - If you move the extension folder, you will need to reload it in Chrome, so make sure to keep it in a stable location.
-
-> **Note**: The above process is for Chrome. Other Chromium-based browsers (Edge, Brave, etc.) have similar steps.
+- The above process is for Chrome. Other Chromium-based browsers (Edge, Brave, etc.) have similar steps.
 
 ---
 
