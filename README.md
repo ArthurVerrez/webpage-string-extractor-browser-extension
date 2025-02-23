@@ -19,7 +19,7 @@ Compatible with Google Chrome (Manifest V3).
 
 ## Installation
 
-[Download the latest version (v0.0.2)](https://github.com/ArthurVerrez/webpage-string-extractor-browser-extension/releases/download/v0.0.2/webpage-string-extractor-v0.0.2.zip).
+[Download the latest version (v0.0.2)](https://github.com/ArthurVerrez/webpage-string-extractor-browser-extension/releases/download/v0.0.2/webpage-string-extractor-v002.zip).
 
 1. **Unzip** the downloaded file to a folder on your computer.
 2. **Open Chrome** and go to `chrome://extensions/`.
