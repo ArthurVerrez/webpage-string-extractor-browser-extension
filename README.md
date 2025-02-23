@@ -18,7 +18,13 @@ Compatible with Google Chrome (Manifest V3).
 
 ## Installation
 
-TBD
+[Download the latest version](https://github.com/ArthurVerrez/webpage-string-extractor-browser-extension/releases/download/v0.0.1/webpage-string-extractor-v001.zip).
+
+1. **Unzip** the downloaded file to a folder on your computer.
+2. **Open Chrome** and go to `chrome://extensions/`.
+3. **Enable Developer Mode** (toggle in the top-right corner).
+4. Click **Load unpacked** and select the folder you just unzipped.
+5. The extension should now appear in your list of installed extensions.
 
 > **Note**: The above process is for Chrome. Other Chromium-based browsers (Edge, Brave, etc.) have similar steps.
 
@@ -51,7 +57,7 @@ If you want to actively develop or modify the extension, use the following workf
 
    This command watches for file changes and updates the extension build in real time.
 
-3. **Load Unpacked** in Chrome:
+3. **Load Unpacked** in Chrome ([Official Chrome Guide](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked)):
 
    - Navigate to `chrome://extensions/`
    - Ensure **Developer mode** is enabled.
