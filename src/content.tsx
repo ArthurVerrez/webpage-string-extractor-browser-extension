@@ -50,14 +50,28 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       emails: uniqueEmails,
       phones: uniquePhones,
       links: uniqueLinks,
-      imageLinks: uniqueImageLinks
+      imageLinks: uniqueImageLinks,
+      customMatches: []
     })
+  } else if (request.type === "GET_CUSTOM") {
+    const htmlText = document.documentElement.outerHTML
+    let matches: string[] = []
+    try {
+      const re = new RegExp(request.regex, "g")
+      let match
+      while ((match = re.exec(htmlText)) !== null) {
+        matches.push(match[1] ? match[1] : match[0])
+      }
+    } catch (e) {
+      matches = []
+    }
+    sendResponse({ customMatches: matches })
   }
   return true
 })
 
-const IncrementButton = () => {
+const Content = () => {
   return <></>
 }
 
-export default IncrementButton
+export default Content

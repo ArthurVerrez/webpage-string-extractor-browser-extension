@@ -10,9 +10,18 @@ import {
   CardHeader,
   CardTitle
 } from "~components/ui/card"
+import { Input } from "~components/ui/input"
+import { Separator } from "~components/ui/separator"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from "~components/ui/tooltip"
 
 import "~style.css"
 
+import codeIcon from "data-base64:~images/code.svg"
 import imageIcon from "data-base64:~images/image.svg"
 import linkIcon from "data-base64:~images/link.svg"
 import mailIcon from "data-base64:~images/mail.svg"
@@ -23,6 +32,7 @@ interface ExtractionData {
   phones: string[]
   links: string[]
   imageLinks: string[]
+  customMatches: string[]
 }
 
 const Popup = () => {
@@ -30,8 +40,10 @@ const Popup = () => {
     emails: [],
     phones: [],
     links: [],
-    imageLinks: []
+    imageLinks: [],
+    customMatches: []
   })
+  const [customRegex, setCustomRegex] = useState("")
 
   const handleGetData = () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -41,7 +53,13 @@ const Popup = () => {
           { type: "GET_DATA" },
           (response: ExtractionData) =>
             setData(
-              response || { emails: [], phones: [], links: [], imageLinks: [] }
+              response || {
+                emails: [],
+                phones: [],
+                links: [],
+                imageLinks: [],
+                customMatches: []
+              }
             )
         )
       }
@@ -58,6 +76,27 @@ const Popup = () => {
   useEffect(() => {
     handleGetData()
   }, [])
+
+  useEffect(() => {
+    if (customRegex) {
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        if (tabs[0]?.id !== undefined) {
+          chrome.tabs.sendMessage(
+            tabs[0].id,
+            { type: "GET_CUSTOM", regex: customRegex },
+            (response: { customMatches: string[] }) => {
+              setData((prev) => ({
+                ...prev,
+                customMatches: response?.customMatches || []
+              }))
+            }
+          )
+        }
+      })
+    } else {
+      setData((prev) => ({ ...prev, customMatches: [] }))
+    }
+  }, [customRegex])
 
   return (
     <div className="bg-white p-2 w-96">
@@ -92,7 +131,6 @@ const Popup = () => {
                 Copy as CSV
               </Button>
             </div>
-
             <div className="flex items-center justify-between space-x-4">
               <div className="flex items-center space-x-4">
                 <Avatar className="rounded-none">
@@ -119,7 +157,6 @@ const Popup = () => {
                 Copy as CSV
               </Button>
             </div>
-
             <div className="flex items-center justify-between space-x-4">
               <div className="flex items-center space-x-4">
                 <Avatar className="rounded-none">
@@ -144,7 +181,6 @@ const Popup = () => {
                 Copy as CSV
               </Button>
             </div>
-
             <div className="flex items-center justify-between space-x-4">
               <div className="flex items-center space-x-4">
                 <Avatar className="rounded-none">
@@ -170,6 +206,49 @@ const Popup = () => {
                 onClick={() => handleCopyCSV(data.imageLinks)}>
                 Copy as CSV
               </Button>
+            </div>
+            <Separator />
+            <div className="flex items-center justify-between space-x-4">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <div className="flex items-center space-x-4">
+                      <Avatar className="rounded-none">
+                        <AvatarImage
+                          src={codeIcon}
+                          alt="Code Icon"
+                          className="rounded-none"
+                        />
+                        <AvatarFallback>R</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <p className="text-sm font-medium leading-none">
+                          Custom HTML Regex
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          {data.customMatches.length} detected
+                        </p>
+                      </div>
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Applied on the HTML of the page</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => handleCopyCSV(data.customMatches)}>
+                Copy as CSV
+              </Button>
+            </div>
+            <div>
+              <Input
+                placeholder="<span.*>(.*)</span>"
+                value={customRegex}
+                onChange={(e) => setCustomRegex(e.target.value)}
+              />
             </div>
           </div>
         </CardContent>
