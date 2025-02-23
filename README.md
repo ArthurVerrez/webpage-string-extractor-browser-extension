@@ -26,6 +26,8 @@ Compatible with Google Chrome (Manifest V3).
 4. Click **Load unpacked** and select the folder you just unzipped.
 5. The extension should now appear in your list of installed extensions.
 
+Note: The first time you load the extension, you might need to refresh the page you want to extract data from if it was opened before installing the extension.
+
 > **Note**: The above process is for Chrome. Other Chromium-based browsers (Edge, Brave, etc.) have similar steps.
 
 ---
