@@ -11,14 +11,15 @@ Compatible with Google Chrome (Manifest V3).
 
 - **Email Extraction**: Finds and lists all email addresses on the current webpage.
 - **Phone Number Extraction**: Identifies and displays all phone numbers on the page.
-- **Link Extraction**: Captures all hyperlinks on the page, including their text labels (if any).
-- **Image Extraction**: Gathers image sources (URLs) and alt-texts.
+- **Link Extraction**: Captures all hyperlinks on the page.
+- **Image Extraction**: Gathers image sources (URLs).
+- **Custom Regex Extraction**: Enter any regex pattern to search the page’s raw HTML and automatically see matches as you type.
 
 ---
 
 ## Installation
 
-[Download the latest version](https://github.com/ArthurVerrez/webpage-string-extractor-browser-extension/releases/download/v0.0.1/webpage-string-extractor-v001.zip).
+[Download the latest version (v0.0.2)](https://github.com/ArthurVerrez/webpage-string-extractor-browser-extension/releases/download/v0.0.2/webpage-string-extractor-v0.0.2.zip).
 
 1. **Unzip** the downloaded file to a folder on your computer.
 2. **Open Chrome** and go to `chrome://extensions/`.
@@ -29,7 +30,7 @@ Compatible with Google Chrome (Manifest V3).
 Notes:
 
 - The first time you load the extension, you might need to refresh the page you want to extract data from if it was opened before installing the extension.
-- If you move the extension folder, you will need to reload it in Chrome, so make sure to keep it in a stable location.
+- If you move the extension folder, you will need to reload it in Chrome, so keep it in a stable location.
 - The above process is for Chrome. Other Chromium-based browsers (Edge, Brave, etc.) have similar steps.
 
 ---
@@ -37,9 +38,10 @@ Notes:
 ## Usage
 
 1. **Open the extension** from your browser toolbar after installation.
-2. **Select the type of data** you want to extract (e.g., emails, phone number, links, images).
-3. **Click “Extract”** to parse the current webpage and display the matching results.
-4. **Export or copy** the extracted data as needed.
+2. **Select the type of data** you want to extract (e.g., emails, phone numbers, links, images).
+3. **Enter a custom regex** in the “Custom Regex” field (optional). The extension will automatically parse the page’s HTML to find all matching text.
+4. **Click “Extract”** (or simply type in your regex) to parse the current webpage and display the matching results.
+5. **Export or copy** the extracted data as needed.
 
 ---
 

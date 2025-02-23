@@ -1,7 +1,7 @@
 {
   "name": "webpage-string-extractor",
   "displayName": "Webpage String Extractor",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple extension that extracts different strings from a webpage.",
   "author": "author",
   "scripts": {
