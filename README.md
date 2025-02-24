@@ -35,16 +35,6 @@ Notes:
 
 ---
 
-## Usage
-
-1. **Open the extension** from your browser toolbar after installation.
-2. **Select the type of data** you want to extract (e.g., emails, phone numbers, links, images).
-3. **Enter a custom regex** in the “Custom Regex” field (optional). The extension will automatically parse the page’s HTML to find all matching text.
-4. **Click “Extract”** (or simply type in your regex) to parse the current webpage and display the matching results.
-5. **Export or copy** the extracted data as needed.
-
----
-
 ## Development
 
 If you want to actively develop or modify the extension, use the following workflow:
