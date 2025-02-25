@@ -1,6 +1,5 @@
 // content.tsx
 import type { PlasmoCSConfig } from "plasmo"
-import React from "react"
 
 export const config: PlasmoCSConfig = {
   matches: ["<all_urls>"]
@@ -69,9 +68,3 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
   return true
 })
-
-const Content = () => {
-  return <></>
-}
-
-export default Content
