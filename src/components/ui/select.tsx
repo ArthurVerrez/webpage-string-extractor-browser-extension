@@ -1,8 +1,8 @@
-import * as React from "react"
 import * as SelectPrimitive from "@radix-ui/react-select"
 import { Check, ChevronDown, ChevronUp } from "lucide-react"
+import * as React from "react"
 
-import { cn } from "@/src/lib/utils"
+import { cn } from "~lib/utils"
 
 const Select = SelectPrimitive.Root
 
@@ -20,8 +20,7 @@ const SelectTrigger = React.forwardRef<
       "flex h-10 w-full items-center justify-between rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm ring-offset-white data-[placeholder]:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 dark:border-zinc-800 dark:bg-zinc-950 dark:ring-offset-zinc-950 dark:data-[placeholder]:text-zinc-400 dark:focus:ring-zinc-300",
       className
     )}
-    {...props}
-  >
+    {...props}>
     {children}
     <SelectPrimitive.Icon asChild>
       <ChevronDown className="h-4 w-4 opacity-50" />
@@ -40,8 +39,7 @@ const SelectScrollUpButton = React.forwardRef<
       "flex cursor-default items-center justify-center py-1",
       className
     )}
-    {...props}
-  >
+    {...props}>
     <ChevronUp className="h-4 w-4" />
   </SelectPrimitive.ScrollUpButton>
 ))
@@ -57,8 +55,7 @@ const SelectScrollDownButton = React.forwardRef<
       "flex cursor-default items-center justify-center py-1",
       className
     )}
-    {...props}
-  >
+    {...props}>
     <ChevronDown className="h-4 w-4" />
   </SelectPrimitive.ScrollDownButton>
 ))
@@ -79,16 +76,14 @@ const SelectContent = React.forwardRef<
         className
       )}
       position={position}
-      {...props}
-    >
+      {...props}>
       <SelectScrollUpButton />
       <SelectPrimitive.Viewport
         className={cn(
           "p-1",
           position === "popper" &&
             "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
-        )}
-      >
+        )}>
         {children}
       </SelectPrimitive.Viewport>
       <SelectScrollDownButton />
@@ -119,8 +114,7 @@ const SelectItem = React.forwardRef<
       "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-zinc-100 focus:text-zinc-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-zinc-800 dark:focus:text-zinc-50",
       className
     )}
-    {...props}
-  >
+    {...props}>
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <SelectPrimitive.ItemIndicator>
         <Check className="h-4 w-4" />
@@ -154,5 +148,5 @@ export {
   SelectItem,
   SelectSeparator,
   SelectScrollUpButton,
-  SelectScrollDownButton,
+  SelectScrollDownButton
 }
